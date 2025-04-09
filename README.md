@@ -28,21 +28,21 @@ In terms of feature selection I tried a few things to make the resulting model b
 
 # Training
 
-For training I used 2 types of models Linear Regression and Decision trees. Between the two the Linear Regression did better, but the result from decision trees was interesting too(I forgot to set the max depth so it was way too overfitted, after realising that I found that having the max depth at 5 provided the most balanced result, meaning that the root mean square error of train and test were close enough).
+For training I used 3 types of models Linear Regression, Decision trees and Forest Regression. Between the three the Linear Regression did better, but the result from decision trees was interesting too(I forgot to set the max depth so it was way too overfitted, after realising that I found that having the max depth at 5 provided the most balanced result, meaning that the root mean square error of train and test were close enough). Also Forest Regression did return a better root mean square error on test, but since the difference between train and test was too big, I believe it is overfitted and therefore didnt accept it as the best model.
 
-In terms of hyperparameter testing I did quite a bit, as mentioned above I tested multiple depths for the decision tree, tried manipulating the threshold between owe and standard encoding of Na variables, the correlation barrier was also something to test which decided when 2 features were too correlated.
+In terms of hyperparameter testing I did quite a bit, as mentioned above I tested multiple depths for the decision tree, tried manipulating the threshold of when a column should be removed(when Na % was too much), the threshold of unqie variable count for when to use One hot encoding or standard encoding, the correlation barrier was also something to test which decided when 2 features were too correlated.
 
-Even though I played around so much with so many different approaches to this problem for better or for worse I still found that the base model that I trained, the Linear regression with no correlation filters or scalers produced the best results. To compare different models I used 2 values, the root mean squared error and the r2 score. Both of them were a big help since with them I managed to find out if a model was overfitted/underfitted.
+Even though I played around so much with so many different approaches to this problem, for better or for worse I still found that the base model that I trained, the Linear regression with no correlation filters or scalers produced the best results. To compare different models I used 2 values, the root mean squared error and the r2 score. Both of them were a big help since with them I managed to find out if a model was overfitted/underfitted.
 
 # MLflow Tracking
 
 My MLflow experiments link is this: https://dagshub.com/gbend22/ml-homework.mlflow/
 
-It is divided into 3 parts: testing(contains my first run), Linear_Regression(where I use linear regression with different scalers and hyperparameters) and Decision_Tree(where I use decision tree with different scalers and hyperparameters)
+It is divided into 4 parts: testing(contains my first run), Linear_Regression(where I use linear regression with different scalers and hyperparameters) and Decision_Tree(where I use decision tree with different scalers and hyperparameters), Forest_Regressor(where I use forest regression with different scalers)
 
 The metrics written in them are the r2 score and the root mean squared errors on train and test datasets. I store the Pipeline used to transform the inputed table and the trained model.
 
-The best model's results were the following(It technically isn't the very best model but it is basically the same +-100 pm rmse and +-0.02 on r2):
+The best model's results, which I believe is Linear regression with no scalers or correlation filters, were the following(It technically isn't the very best model but it is basically the same +-100 pm rmse and +-0.02 on r2):
 1. Root Mean Squared Error (Train): 28511.80919690585
 2. Root Mean Squared Error (Test): 33228.35741244413
 3. R2 Score (Train): 0.863707536709239
