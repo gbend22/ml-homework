@@ -13,19 +13,18 @@ I have 2 model_experiment .ipynb-s the first one is where I submit my work in ml
 # Feature Engineering
 
 First of all we need to deal with Na values. To do this I do the following:
-    1. Remove features that have more than 50% Na-s in them.
-    2. For the rest I fill them in with the most frequent value in the column(I tried to fill the numeric ones with the median but since the difference wasn't big for simplicity I simply left it like this).
+1. Remove features that have more than 50% Na-s in them.
+2. For the rest I fill them in with the most frequent value in the column(I tried to fill the numeric ones with the median but since the difference wasn't big for simplicity I simply left it like this).
 
 Next, we need to deal with non-numeric values. For this i do the following:
-    1. For columns which have less than 5 unique values in them I use One Hot encoding.
-    2. For columns which hame more than 5 unique values in them I use Standard LabelEncoder.
+1. For columns which have less than 5 unique values in them I use One Hot encoding.
+2. For columns which hame more than 5 unique values in them I use Standard LabelEncoder.
 
 # Feature Selection
 
 In terms of feature selection I tried a few things to make the resulting model better. These include the following:
-    1. I tried using a correlation filter so that if 2 columns had a correlation more than 0.8(played with this number too) I dropped them. This method sadly didnt bring about the result I wanted and made the model a bit worse.
-
-    2. I tried using multiple scalers(Standard scaler, Minmax scaler) so that all of the features were in a certain range, but this didn't really improve the model that much(you can see this in mlflow)
+1. I tried using a correlation filter so that if 2 columns had a correlation more than 0.8(played with this number too) I dropped them. This method sadly didnt bring about the result I wanted and made the model a bit worse.
+2. I tried using multiple scalers(Standard scaler, Minmax scaler) so that all of the features were in a certain range, but this didn't really improve the model that much(you can see this in mlflow)
 
 # Training
 
@@ -44,7 +43,7 @@ It is divided into 3 parts: testing(contains my first run), Linear_Regression(wh
 The metrics written in them are the r2 score and the root mean squared errors on train and test datasets. I store the Pipeline used to transform the inputed table and the trained model.
 
 The best model's results were the following(It technically isn't the very best model but it is basically the same +-100 pm rmse and +-0.02 on r2):
-    Root Mean Squared Error (Train): 28511.80919690585
-    Root Mean Squared Error (Test): 33228.35741244413
-    R2 Score (Train): 0.863707536709239
-    R2 Score (Test): 0.8560525711025742
+1. Root Mean Squared Error (Train): 28511.80919690585
+2. Root Mean Squared Error (Test): 33228.35741244413
+3. R2 Score (Train): 0.863707536709239
+4. R2 Score (Test): 0.8560525711025742
